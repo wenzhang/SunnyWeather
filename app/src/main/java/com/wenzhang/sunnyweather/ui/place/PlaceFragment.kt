@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.wenzhang.sunnyweather.MainActivity
 import com.wenzhang.sunnyweather.databinding.FragmentPlaceBinding
 import com.wenzhang.sunnyweather.ui.weather.WeatherActivity
 import com.wenzhang.sunnyweather.util.showToast
@@ -67,13 +68,15 @@ class PlaceFragment : Fragment() {
         })
     }
 
-    fun checkPlaceSave() {
-        if (viewModel.isPlaceSave()) {
+    private fun checkPlaceSave() {
+        if (activity is MainActivity && viewModel.isPlaceSave()) {
             val place = viewModel.getSavePlace()
             this.context?.startActivity<WeatherActivity>(
                 "location_lng" to place.location.lng,
                 "location_lat" to place.location.lat
             )
+            this.activity?.finish()
+            return
         }
     }
 

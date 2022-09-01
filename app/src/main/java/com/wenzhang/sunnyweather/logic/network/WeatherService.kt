@@ -7,6 +7,9 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
+/**
+ * 获取天气信息接口
+ */
 interface WeatherService {
 
     /**

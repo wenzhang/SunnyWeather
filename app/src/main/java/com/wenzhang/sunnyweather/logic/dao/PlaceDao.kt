@@ -6,6 +6,10 @@ import com.google.gson.Gson
 import com.wenzhang.sunnyweather.SunnyWeatherApplication
 import com.wenzhang.sunnyweather.logic.model.Place
 
+/**
+ * 地区信息数据 DAO
+ * 保存与读取选中地区信息 place json
+ */
 object PlaceDao {
 
     const val PLACE_SAVE_NAME = "sunny_weather"

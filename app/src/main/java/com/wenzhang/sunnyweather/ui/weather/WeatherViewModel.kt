@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.wenzhang.sunnyweather.logic.Repository
 import com.wenzhang.sunnyweather.logic.model.Location
 
+/**
+ * 天气数据ViewModel
+ */
 class WeatherViewModel : ViewModel() {
 
     private val locationLiveData = MutableLiveData<Location>()
@@ -22,5 +25,9 @@ class WeatherViewModel : ViewModel() {
 
     fun refreshWeather(lng: String, lat: String) {
         locationLiveData.value = Location(lng, lat)
+    }
+
+    fun refreshWeather() {
+        locationLiveData.value = Location(locationLng, locationLat)
     }
 }

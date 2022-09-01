@@ -6,6 +6,9 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * 地区信息获取接口
+ */
 interface PlaceService {
 
     /**

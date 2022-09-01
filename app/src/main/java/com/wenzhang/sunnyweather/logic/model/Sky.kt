@@ -2,6 +2,15 @@ package com.wenzhang.sunnyweather.logic.model
 
 import com.wenzhang.sunnyweather.R
 
+/**
+ * 天气信息转换
+ *
+ * 根据返回天气标识转换为可用数据
+ *
+ * 天气名称 -> '晴'
+ * 天气图标
+ * 天气背景
+ */
 class Sky (val info: String, val icon: Int, val bg: Int)
 
 private val sky = mapOf(

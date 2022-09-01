@@ -33,6 +33,9 @@ object Repository {
         }
     }
 
+    /**
+     * 根据经纬度,刷新天气信息
+     */
     fun refreshWeather(lng: String, lat: String) = fire(Dispatchers.IO) {
         coroutineScope {
             val deferredRealtime = async {
@@ -61,6 +64,9 @@ object Repository {
 
     fun isPlaceSave() = PlaceDao.isPlaceSave()
 
+    /**
+     * 简化try-catch，统一异常处理
+     */
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData<Result<T>> {
             val result = try {
