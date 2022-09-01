@@ -10,7 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wenzhang.sunnyweather.databinding.FragmentPlaceBinding
+import com.wenzhang.sunnyweather.ui.weather.WeatherActivity
 import com.wenzhang.sunnyweather.util.showToast
+import com.wenzhang.sunnyweather.util.startActivity
 
 class PlaceFragment : Fragment() {
 
@@ -34,9 +36,12 @@ class PlaceFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         val layoutManager = LinearLayoutManager(activity)
 
+        checkPlaceSave()
+
         binding.recyclerView.layoutManager = layoutManager
         adapter = PlaceAdapter(this, viewModel.placeList)
         binding.recyclerView.adapter = adapter
+
         binding.searchPlaceEdit.addTextChangedListener {
             val content = it.toString()
             if (content.isNotEmpty()) {
@@ -47,6 +52,7 @@ class PlaceFragment : Fragment() {
                 adapter.notifyDataSetChanged()
             }
         }
+
         viewModel.placeLiveData.observe(viewLifecycleOwner, Observer {
             val places = it.getOrNull()
             if (places != null) {
@@ -59,6 +65,16 @@ class PlaceFragment : Fragment() {
                 it.exceptionOrNull()?.printStackTrace()
             }
         })
+    }
+
+    fun checkPlaceSave() {
+        if (viewModel.isPlaceSave()) {
+            val place = viewModel.getSavePlace()
+            this.context?.startActivity<WeatherActivity>(
+                "location_lng" to place.location.lng,
+                "location_lat" to place.location.lat
+            )
+        }
     }
 
     private fun setPlaceListVisibilty(visibilty: Boolean) {

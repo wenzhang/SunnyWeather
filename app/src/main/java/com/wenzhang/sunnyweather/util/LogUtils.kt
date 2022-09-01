@@ -21,18 +21,18 @@ object LogUtils {
     }
 
     fun d(tag: String, msg: String) {
-        if (level <= DEBUG) Log.v(tag, msg)
+        if (level <= DEBUG) Log.d(tag, msg)
     }
 
     fun i(tag: String, msg: String) {
-        if (level <= INFO) Log.v(tag, msg)
+        if (level <= INFO) Log.i(tag, msg)
     }
 
     fun w(tag: String, msg: String) {
-        if (level <= WARN) Log.v(tag, msg)
+        if (level <= WARN) Log.w(tag, msg)
     }
 
     fun e(tag: String, msg: String) {
-        if (level <= ERROR) Log.v(tag, msg)
+        if (level <= ERROR) Log.e(tag, msg)
     }
 }
